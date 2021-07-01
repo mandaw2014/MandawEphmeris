@@ -1,0 +1,384 @@
+JS:
+
+let lat;
+  let lng;
+
+  navigator.geolocation.getCurrentPosition(function(position) {
+    lat = position.coords.latitude;
+    lng = position.coords.longitude;
+  });
+
+setInterval(function() {
+    const apiKey = "75ccb604c8c7807a5fce59d5e0f4e1cf";
+
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`;
+
+    fetch(weatherUrl).then(response => response.json()).then(data => {
+      const temp = data["main"]["temp"];
+      temperature.innerHTML = temp + "°C";
+
+      const desc = data["weather"][0]["description"];
+
+      const feelsLike = data["main"]["feels_like"];
+      feelsTemp.innerHTML = "Feels like " + feelsLike + "°C" + ". " + desc;
+
+      const wind = data["wind"]["speed"];
+      const visibility = data["visibility"];
+      const humidity = data["main"]["humidity"];
+      details.innerHTML = "Wind speed: " + wind + "km. " + "Visibility: " + visibility / 1000 + "km. " + "Humidity: " + humidity + "%" + ".";
+
+      if(desc === "clear sky") 
+        descImg.src = "./Screenshots/clear-sky.png";
+      else if(desc === "few clouds") 
+        descImg.src = "./Screenshots/few-clouds.png";
+      else if(desc === "scattered clouds") 
+        descImg.src = "./Screenshots/scattered-clouds.png";
+      else if(desc === "broken clouds") 
+        descImg.src = "./Screenshots/broken-clouds.png";
+      else if(desc === "shower rain") 
+        descImg.src = "./Screenshots/rain.png";
+      else if(desc === "rain") 
+        descImg.src = "./Screenshots/rain.png";
+      else if(desc === "thunderstorm") 
+        descImg.src = "./Screenshots/thunderstorm.png";
+      else if(desc === "snow") 
+        descImg.src = "./Screenshots/snow.png";
+      else if(desc === "mist") 
+        descImg.src = "./Screenshots/mist.png";
+    })
+    .catch(() => {
+      
+    });
+  }, 1000);
+
+const time = document.getElementById("time");
+
+const dt = new Date();
+let h = dt.getHours();
+let m = dt.getMinutes();
+
+if(m < 10) {
+  m = "0" + m;
+}
+
+let d = dt.getDate();
+let mt = dt.getMonth();
+let y = dt.getFullYear();
+
+if(mt === 0) 
+  mt = 1;
+else if(mt === 1) 
+  mt = 2;
+else if(mt === 2) 
+  mt = 3;
+else if(mt === 3) 
+  mt = 4;
+else if(mt === 4) 
+  mt = 5;
+else if(mt === 5) 
+  mt = 6;
+else if(mt === 6) 
+  mt = 7;
+else if(mt === 7) 
+  mt = 8;
+else if(mt === 8) 
+  mt = 9;
+else if(mt === 9) 
+  mt = 10;
+else if(mt === 10) 
+  mt = 11;
+else if(mt === 11) 
+  mt = 12;
+
+time.innerHTML = h + ":" + m;
+
+HTML: 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandaw Weather</title>
+    <link rel="stylesheet" href="./style.css">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html" id="home">Mandaw</a>
+        <a id="weather">Weather</a>
+        <a id="location">Current Location</a>
+        <a href="./download.html" id="about">Download</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <img src="./Screenshots/IMG_0404.JPG" id="sunrise" alt="">
+    
+    <div class="weather">
+        <h1 id="name"></h1>
+        <h1 id="temp"></h1>
+        <img src="./Screenshots/scattered-clouds.png" id="descImg" alt="">
+        <h3 id="feelsLike"></h3>
+
+        <div class="details">
+            <h3 id="details"></h3>
+            <h3 id="time"></h3>
+        </div>
+
+        <img src="./Screenshots/sunrise.svg" id="sunriseImg" alt="">
+        <img src="./Screenshots/sunset.svg" id="sunsetImg" alt="">
+
+        <h3 id="sunriseText">Sunrise time: <br></h3>
+        <h3 id="sunsetText">Sunset time: <br></h3>
+
+        <img src="" id="moonPhase" alt="">
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>
+
+CSS:
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    overflow: visible;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+.topnav {
+    background-color: transparent;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    top: 6px;
+}
+
+.topnav a:hover {
+    color: #00c3ff;
+}
+
+.topnav a.active {
+    background-color: #07d3ff;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .topnav {position: relative;}
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+    #name {
+        position: relative;
+        text-align: center;
+        top: 0px;
+    }
+    #temp {
+        position: relative;
+        text-align: center;
+        top: 0px;
+    }
+    #descImg {
+        position: relative;
+        text-align: center;
+        top: 0px;
+    }
+    #home {
+        top: 0px;
+    }
+    #sunriseImg {
+        position: relative;
+    }
+    #sunsetImg {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .topnav.responsive {position: relative;}
+    .topnav {background-color: #333;}
+    .topnav.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    .topnav a {
+        color: white;
+    }
+    #name {
+        position: relative;
+        text-align: center;
+        top: 0px;
+    }
+    #temp {
+        position: relative;
+        text-align: center;
+        top: 0px;
+    }
+    #descImg {
+        position: relative;
+        text-align: center;
+        top: 0px;
+    }
+    #home {
+        top: 0px;
+    }
+    #sunriseImg {
+        position: relative;
+    }
+    #sunsetImg {
+        position: relative;
+    }
+}
+
+#home {
+    position: relative;
+    top: -4px;
+    font-size: 32px;
+}
+
+#sunrise {
+    width: 100%;
+    height: auto;
+}
+
+.weather {
+    text-align: center;
+    padding: 50px;
+}
+
+#name {
+    text-align: center;
+    font-size: 45px;
+    position: relative;
+    top: 30px;
+}
+
+#temp {
+    position: relative;
+    text-align: center;
+    top: 85px;
+    left: 40px;
+    font-size: 40px;
+}
+
+#descImg {
+    width: 60px;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 30px;
+    left: -60px;
+}
+
+#feelsLike {
+    position: relative;
+    top: 70px;
+    text-align: center;
+}
+
+.details {
+    position: relative;
+    top: 100px;
+    font-size: 12px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 4px solid #00c3ff;
+    text-align: center;
+}
+
+#sunriseImg {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 300px;
+    left: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#sunsetImg {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    top: 670px;
+    left: -100px;
+}
+
+#sunriseText {
+    position: relative;
+    text-align: center;
+    top: 200px;
+    font-size: 30px;
+    padding: 100px;
+    color: #CFA22B;
+}
+
+#sunsetText {
+    position: relative;
+    text-align: center;
+    top: 300px;
+    font-size: 30px;
+    padding: 100px;
+    color: #CE2C27;
+}
+
+#moonPhase {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 50px;
+}
+
+@media only screen and (max-width: 1000px) {
+    #sunriseImg {
+        position: relative;
+        left: 0px;
+        top: 500px;
+        margin-left: auto;
+        margin-left: auto;
+    }
+    #sunsetImg {
+        position: relative;
+        left: 0px;
+        top: 750px;
+        margin-left: auto;
+        margin-left: auto;
+    }
+}
