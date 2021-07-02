@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.downloads {
+    text-align: center;
+    position: relative;
+    top: 50px;
+}
+
+#app {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    height: 650px;
+    position: relative;
+    top: 100px;
+}
+
+#appwin {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    height: 650px;
+    position: relative;
+    top: 200px;
+}
+
+#footer {
+    background-color: #414141;
+    color: rgb(163, 163, 163);
+    height: 150px;
+    position: relative;
+    top: 500px;
+}
+
+#cr {
+    position: relative;
+    text-align: center;
+    top: 50px;
+}
+
+@media only screen and (max-width: 1000px) {
+    #cr {
+        position: relative;
+        top: 25px;
+    }
+}
