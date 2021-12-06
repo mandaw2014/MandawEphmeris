@@ -1,0 +1,247 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+#home {
+    position: relative;
+    top: -4px;
+    font-size: 32px;
+}
+
+#infoDiv {
+    color: #919497;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px;
+    line-height: 160%;
+    font-weight: bold;
+}
+
+#mandaw {
+    position: relative;
+    top: 50px;
+    color: rgb(126, 126, 204);
+    z-index: -100;
+}
+
+#info {
+    position: relative;
+    top: 100px;
+    z-index: -100;
+}
+
+#infoHeader {
+    position: relative;
+    top: 200px;
+    color: rgb(126, 126, 204);
+}
+
+#graph {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: auto;
+    position: relative;
+    top: 300px;
+}
+
+#graphInfo {
+    position: relative;
+    top: 400px;
+}
+
+#sunrise {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: -5px;
+    z-index: -100;
+}
+
+#location {
+    text-align: center;
+    position: relative;
+    top: 150px;
+}
+
+#sunriseImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: -50px;
+}
+
+#sunriseText {
+    text-align: center;
+    position: relative;
+    top: -50px;
+}
+
+#sunsetImg {
+    width: 135px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 100px;
+}
+
+#sunsetText {
+    position: relative;
+    top: 100px;
+    text-align: center;
+}
+
+#phoenix {
+    padding: 0;
+    margin: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 2650px;
+}
+
+#moonHeader {
+    position: relative;
+    top: 1800px;
+    color: rgb(126, 126, 204);
+}
+
+#moonGraph {
+    position: relative;
+    top: 1900px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#moonGraphInfo {
+    position: relative;
+    top: 2000px;
+}
+
+#locationMoon {
+    text-align: center;
+    position: relative;
+    top: 2200px;
+}
+
+#moonriseImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 1600px;
+}
+
+#moonriseText {
+    text-align: center;
+    position: relative;
+    top: 1620px;
+}
+
+#moonsetImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 1700px;
+}
+
+#moonsetText {
+    text-align: center;
+    position: relative;
+    top: 1720px; 
+}
+
+#dublinsunrise {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 1900px;
+}
+
+#moonPhaseHeader {
+    position: relative;
+    top: 3400px;
+    color: rgb(126, 126, 204);
+}
+
+#moonPhaseInfo {
+    text-align: center;
+    position: relative;
+    top: 3500px;
+}
+
+#moonPhase {
+    text-align: center;
+    position: relative;
+    top: 2500px;
+}
+
+#moonImg {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 2510px;
+}
+
+#moonPhaseText {
+    text-align: center;
+    position: relative;
+    top: 2520px;
+}
+
+#footer {
+    background-color: #414141;
+    color: rgb(163, 163, 163);
+    height: 150px;
+    position: relative;
+    top: 2800px;
+}
+
+#cr {
+    position: relative;
+    text-align: center;
+    top: 50px;
+}
+
+@media only screen and (max-width: 1000px) {
+    #moonImg {
+        top: 2610px;
+    }
+    #moonPhaseText {
+        top: 2610px;
+    }
+    #moonPhaseHeader {
+        top: 3300px;
+    }
+    #moonPhaseInfo {
+        top: 3350px;
+    }
+    #moonPhase {
+        top: 2600px;
+    }
+}
